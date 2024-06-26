@@ -1,0 +1,55 @@
+module test;
+    reg clk; 
+    reg [2:0] dest_floor;
+    reg press = 0;
+    wire [2:0] current_floor;
+    wire [2:0] last_floor_stop;
+    wire [9:0] in_out_sensor;
+    wire stop;
+    wire up;
+    elevator ele(clk, dest_floor, press, stop, up, last_floor_stop, current_floor, in_out_sensor);
+    initial clk = 0;
+    always #1 clk = ~clk; 
+    initial begin
+    #1;
+    press = 1;
+    dest_floor = 1;
+    #2;    
+    press = 1;
+    dest_floor = 2;
+    #2;
+    press = 0;
+    #600;
+    press = 1;
+    dest_floor = 1;
+    #2;
+    press = 0;
+    #600;
+    press = 1;
+    dest_floor = 4;
+    #2 press = 0;
+    #100; 
+    press = 1;
+    dest_floor = 3;
+    #2 press = 0;
+    #1000 ;
+    press = 1;
+    dest_floor = 1;
+    #2;    
+    press = 1;
+    dest_floor = 3;
+    #2;
+    press = 0;
+    #600;
+    press = 1;
+    dest_floor = 2;
+    #2;
+    press = 0;
+    #600;
+    press = 1;
+    dest_floor = 4;
+    #2 press = 0;
+    #1000; $stop;
+    
+    end
+endmodule
