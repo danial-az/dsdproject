@@ -1,4 +1,4 @@
-# elevator
+# elevator q5
 
 The hardware description of a elevator board. A Verilog project for the Digital Systems Design course, Spring 2024.
 
